@@ -1,41 +1,29 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 import MyComponent from './components/MyComponent.vue';
 </script>
 
 <template>
-  <header>
-
-    <div class="wrapper">
-      <MyComponent test = "hello Wold!"></MyComponent>
-    </div>
-  </header>
+  <div id="app">
+    <MyComponent test="hello World!" />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  box-sizing: border-box;
 }
 
-
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+#app {
+  display: flex; /* Flexbox for child alignment */
+  width: 100%; /* Full width of the viewport */
+  height: 100%; /* Full height of the viewport */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 </style>
+
