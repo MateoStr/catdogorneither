@@ -1,0 +1,19 @@
+{
+  "name": "catdogorneither_v2",
+  "version": "1.0.0",
+  "description": "Second attempt at a cat-dog-or-neither ML project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MateoStr/catdogorneither.git"
+  },
+  "author": "Mateo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MateoStr/catdogorneither/issues"
+  },
+  "homepage": "https://github.com/MateoStr/catdogorneither#readme"
+}
