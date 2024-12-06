@@ -8,7 +8,8 @@ defineProps<{
   <div class="container">
     <div id="upload-side">
         <div class = "file-upload-box">
-            file-upload-box here
+            <div id = "upload-box-inset">upload file here</div>
+            
         </div>
     </div>
     <div id="result-side">
@@ -31,7 +32,7 @@ defineProps<{
 /* Green div on the left */
 #upload-side {
   flex: 1; /* Occupy half the space */
-  background-color: green;
+  background-color: rgb(48, 203, 48);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +41,7 @@ defineProps<{
 /* Red div on the right */
 #result-side {
   flex: 1; /* Occupy the other half */
-  background-color: red;
+  background-color: rgb(223, 72, 72);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,5 +52,28 @@ defineProps<{
     border-radius: 15px;
     height:40vh;
     width: 15vw;
+    justify-content: center;
 }
+
+.file-upload-box{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+#upload-box-inset{
+    border: 4px dashed rgb(99, 99, 99); 
+   
+    border-radius: 15px;
+    display: flex;
+    background-color: rgba(128, 128, 128, 0.573);
+    border-radius: 15px;
+    height: 90%;
+    width: 90%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
 </style>
