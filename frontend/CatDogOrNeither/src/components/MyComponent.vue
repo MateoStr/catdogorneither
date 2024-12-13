@@ -2,15 +2,17 @@
 defineProps<{
   test: string;
 }>();
+
+import FileDropComponent from './FileDropComponent.vue';
 </script>
+
+
+
 
 <template>
   <div class="container">
     <div id="upload-side">
-        <div class = "file-upload-box">
-            <div id = "upload-box-inset">upload file here</div>
-            
-        </div>
+        <FileDropComponent filename = "test"/>
     </div>
     <div id="result-side">
         <div class = "result-box"> result box here</div>
@@ -32,7 +34,7 @@ defineProps<{
 /* Green div on the left */
 #upload-side {
   flex: 1; /* Occupy half the space */
-  background-color: rgb(48, 203, 48);
+  background-color: rgb(142, 204, 142);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +43,7 @@ defineProps<{
 /* Red div on the right */
 #result-side {
   flex: 1; /* Occupy the other half */
-  background-color: rgb(223, 72, 72);
+  background-color: rgb(183, 115, 115);
   display: flex;
   justify-content: center;
   align-items: center;
