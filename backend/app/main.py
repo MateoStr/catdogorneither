@@ -1,5 +1,7 @@
 #script to start the back end server
 
+#To run from terminal for testing: uvicorn app.main:app --reload
+
 from fastapi import FastAPI
 from app.routers import image_router
 
