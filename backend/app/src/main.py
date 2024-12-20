@@ -10,6 +10,11 @@ app = FastAPI()
 #include the router for image processing
 #app.include_router(image_router.router)
 
-@app.get("/")
+@app.get("/") # test Get endpoint
 def read_root():
     return {"message": "Welcome to the FastAPI Backend!"}
+
+
+@app.post("/ping")
+def post_root():
+    return {"message" : "Backend server online"}
