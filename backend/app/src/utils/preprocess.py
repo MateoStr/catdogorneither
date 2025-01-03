@@ -53,41 +53,51 @@ def preprocess_single_image(input_path, output_path=None):
 
 
 
+import os
 
-def preprocess_all_images(raw_dir):
+from PIL import Image, ImageOps
+def preprocess_all_images():
+   
     """
-    Preprocess all images in the raw directory (including subdirectories)
-    and save them into the processed directory while preserving the subdirectory structure.
+    Preprocess all images in the 'backend/app/data/raw' directory (including subdirectories)
+    and save them into the 'backend/app/data/processed' directory while preserving the subdirectory structure.
     """
-    # Constant for processed directory
-    PROCESSED_DIR = "../../data/processed"
+    # Define absolute paths for the raw and processed directories
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    RAW_DIR = os.path.join(BASE_DIR, "../../data/raw")
+    PROCESSED_DIR = os.path.join(BASE_DIR, "../../data/processed")
+
 
     # Initialize counters
     processed_counter = 0
     skipped_counter = 0
     error_counter = 0
 
+
     # Walk through all subdirectories and files in the raw directory
-    for root, _, files in os.walk(raw_dir):
+    for root, _, files in os.walk(RAW_DIR):
+        #print(f"Searching in: {root}")
         for file in files:
+           
+
             if file.lower().endswith(('jpg', 'jpeg', 'png')):
                 input_path = os.path.join(root, file)
 
-                # Calculate relative path from raw_dir to current file's folder
-                relative_path = os.path.relpath(root, raw_dir)
-                
-                # Ensure processed_dir does not end up inside raw_dir
+                # Calculate the relative path from RAW_DIR to the current file's folder
+                relative_path = os.path.relpath(root, RAW_DIR)
+
+                # Create the corresponding subdirectory in the processed directory
                 sub_dir = os.path.join(PROCESSED_DIR, relative_path)
 
-                # Create the output path for this image
+                # Construct the output path for the processed image
                 output_path = os.path.join(sub_dir, f"{os.path.splitext(file)[0]}_preprocessed.jpg")
 
-                # Ensure the subdirectory in processed_dir exists
+                # Ensure the subdirectory in the processed directory exists
                 os.makedirs(sub_dir, exist_ok=True)
 
                 # Skip already preprocessed files
                 if os.path.exists(output_path):
-                    print(f"Skipping {file}, already preprocessed.")
+                    
                     skipped_counter += 1
                     continue
 
@@ -103,5 +113,3 @@ def preprocess_all_images(raw_dir):
     print(f"Processed {processed_counter} files successfully.")
     print(f"Skipped {skipped_counter} files already processed.")
     print(f"Encountered errors processing {error_counter} files.")
-
-
