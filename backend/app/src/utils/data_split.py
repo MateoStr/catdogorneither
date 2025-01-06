@@ -16,10 +16,13 @@ import shutil
 import random
 
 # Paths
-PROCESSED_DIR = "./backend/app/data/processed"
-TRAIN_DIR = "./backend/app/data/train"
-TEST_DIR = "./backend/app/data/test"
-VAL_DIR = "./backend/app/data/val"
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROCESSED_DIR = "../../data/processed"
+TRAIN_DIR = "../../data/train"
+TEST_DIR = "../../data/test"
+VAL_DIR = "../../data/val"
 
 # Split ratios
 TRAIN_RATIO = 0.7
@@ -28,9 +31,9 @@ VAL_RATIO = 0.15
 
 def split_data():
     # Ensure output directories exist
-    for dir_path in [TRAIN_DIR, TEST_DIR, VAL_DIR]:
-        for label in ["cat", "dog"]:
-            os.makedirs(os.path.join(dir_path, label), exist_ok=True)
+    #for dir_path in [TRAIN_DIR, TEST_DIR, VAL_DIR]:
+     #   for label in ["cat", "dog"]:
+      #      os.makedirs(os.path.join(dir_path, label), exist_ok=True)
 
     # Loop through categories (e.g., cat and dog)
     for label in ["cat", "dog"]:
@@ -46,17 +49,18 @@ def split_data():
         test_end = train_end + int(total_files * TEST_RATIO)
 
         # Split files
+        
         train_files = files[:train_end]
         test_files = files[train_end:test_end]
         val_files = files[test_end:]
 
-        # Move files
+        # copy files
         for file in train_files:
-            shutil.move(os.path.join(category_dir, file), os.path.join(TRAIN_DIR, label, file))
+            shutil.copy(os.path.join(category_dir, file), os.path.join(TRAIN_DIR, label, file))
         for file in test_files:
-            shutil.move(os.path.join(category_dir, file), os.path.join(TEST_DIR, label, file))
+            shutil.copy(os.path.join(category_dir, file), os.path.join(TEST_DIR, label, file))
         for file in val_files:
-            shutil.move(os.path.join(category_dir, file), os.path.join(VAL_DIR, label, file))
+            shutil.copy(os.path.join(category_dir, file), os.path.join(VAL_DIR, label, file))
 
     print("Data successfully split into train, test, and validation sets.")
 
